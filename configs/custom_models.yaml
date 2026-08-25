@@ -1,0 +1,15 @@
+# Registry Model Kustom Buatan Pengguna
+# Letakkan file model (.pt, .ckpt, .onnx) di folder 'models/custom/'
+# dan daftarkan konfigurasinya di file ini.
+
+custom_models:
+  - id: "custom_melband_roformer_acapella"
+    name: "Custom Mel-Band RoFormer (Acapella Fine-tuned)"
+    stage: 1
+    architecture: "mel_band_roformer"
+    checkpoint_file: "models/custom/custom_roformer.ckpt"
+    sample_rate: 44100
+    chunk_size_sec: 6.0
+    overlap: 2
+    fp16_supported: true
+    description: "Model RoFormer hasil fine-tuning lokal khusus vokal acapella."

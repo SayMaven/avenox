@@ -1,0 +1,61 @@
+presets:
+  - id: "ai_voice_dataset"
+    name: "AI Voice Dataset Maker"
+    description: "Pipeline penuh: Separasi, pemisahan lead/backing, pembersihan inpainting, pemotongan VAD, Whisper ASR, dan normalisasi LUFS."
+    icon: "database"
+    stages:
+      stage1: true
+      stage2: true
+      stage3: true
+      stage4: true
+    ensemble: false
+    export_dataset: true
+    dataset_formats: ["rvc", "gpt_sovits", "ljspeech"]
+
+  - id: "dry_acapella"
+    name: "Studio Dry Acapella Isolation"
+    description: "Menghasilkan vokal utama kering bebas backing vokal, reverb, dan bocoran instrumen untuk mixing atau sampling."
+    icon: "mic"
+    stages:
+      stage1: true
+      stage2: true
+      stage3: true
+      stage4: false
+    ensemble: false
+    export_dataset: false
+
+  - id: "karaoke_track"
+    name: "Karaoke Clean Track"
+    description: "Memisahkan vokal dan instrumen, mempertahankan harmoni backing vokal pada track instrumen."
+    icon: "music"
+    stages:
+      stage1: true
+      stage2: true
+      stage3: false
+      stage4: false
+    ensemble: false
+    export_dataset: false
+
+  - id: "quick_2stem"
+    name: "Quick 2-Stem Splitter"
+    description: "Pemisahan cepat 2-Stem (Vokal & Instrumental) dalam waktu singkat."
+    icon: "zap"
+    stages:
+      stage1: true
+      stage2: false
+      stage3: false
+      stage4: false
+    ensemble: false
+    export_dataset: false
+
+  - id: "custom_expert"
+    name: "Custom Expert Mode"
+    description: "Kontrol penuh terhadap seluruh parameter dan pemilihan model per tahap."
+    icon: "settings"
+    stages:
+      stage1: true
+      stage2: true
+      stage3: true
+      stage4: true
+    ensemble: true
+    export_dataset: true

@@ -1,0 +1,24 @@
+{
+  "selected_preset": "ai_voice_dataset",
+  "vram_profile": "low_4gb",
+  "last_input_directory": "",
+  "last_output_directory": "output",
+  "last_dataset_directory": "dataset",
+  "theme": "dark",
+  "enable_ensemble": false,
+  "export_stems": {
+    "instrumental": true,
+    "vocal": true,
+    "lead": true,
+    "backing": true,
+    "cleaned_lead": true,
+    "residual_bleed": true
+  },
+  "dataset_settings": {
+    "rvc": true,
+    "gpt_sovits": true,
+    "ljspeech": true,
+    "language": "id",
+    "whisper_model": "base"
+  }
+}

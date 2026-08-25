@@ -1,0 +1,36 @@
+profiles:
+  low_4gb:
+    name: "Low VRAM (4 GB)"
+    description: "Dioptimalkan khusus untuk GPU 4GB VRAM (GTX 1650, RTX 3050 4GB). Chunking 6s, overlap 2x, sequential unload."
+    chunk_size_sec: 6.0
+    overlap: 2
+    batch_size: 1
+    fp16: true
+    force_sequential_unload: true
+    oom_downchunk_factor: 0.5
+    min_chunk_size_sec: 2.0
+    cpu_offload_stage4: true
+
+  medium_8gb:
+    name: "Standard VRAM (8 GB)"
+    description: "Optimal untuk GPU 6GB-8GB VRAM (RTX 3060, RTX 4060). Chunking 8s, overlap 4x."
+    chunk_size_sec: 8.0
+    overlap: 4
+    batch_size: 1
+    fp16: true
+    force_sequential_unload: true
+    oom_downchunk_factor: 0.5
+    min_chunk_size_sec: 3.0
+    cpu_offload_stage4: false
+
+  high_16gb:
+    name: "High Performance (12 GB+)"
+    description: "Kualitas tertinggi untuk GPU 12GB-24GB. Chunking 12s, overlap 8x, ensemble multi-pass."
+    chunk_size_sec: 12.0
+    overlap: 8
+    batch_size: 2
+    fp16: true
+    force_sequential_unload: false
+    oom_downchunk_factor: 0.5
+    min_chunk_size_sec: 4.0
+    cpu_offload_stage4: false

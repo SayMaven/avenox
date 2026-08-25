@@ -1,0 +1,57 @@
+stages:
+  stage1_separation:
+    enabled: true
+    name: "Mel-Band RoFormer Vocal Separation"
+    default_model: "mel_band_roformer_vocals"
+    model_filename: "mel_band_roformer_vocals.ckpt"
+    download_url: "https://huggingface.co/SayMaven/avenox-models/resolve/main/mel_band_roformer_vocals.ckpt"
+    sample_rate: 44100
+    chunk_size_sec: 6.0
+    overlap: 2
+    export_instrumental: true
+    phase_inversion: true
+
+  stage2_deconstruction:
+    enabled: true
+    name: "Mid-Side Polyphonic Lead/Backing Separation"
+    default_model: "lead_backing_complex_unet"
+    model_filename: "lead_backing_complex_unet.pt"
+    download_url: "https://huggingface.co/SayMaven/avenox-models/resolve/main/lead_backing_complex_unet.pt"
+    sample_rate: 44100
+    ms_matrix_enabled: true
+    chunk_size_sec: 6.0
+    overlap: 2
+    export_lead: true
+    export_backing: true
+
+  stage3_inpainting:
+    enabled: true
+    name: "Neural STFT Partial-Convolution Bleed Cleaner"
+    default_model: "spectral_inpainter_pconv"
+    model_filename: "spectral_inpainter_pconv.pt"
+    download_url: "https://huggingface.co/SayMaven/avenox-models/resolve/main/spectral_inpainter_pconv.pt"
+    sample_rate: 44100
+    n_fft: 2048
+    hop_length: 512
+    mask_threshold: 0.15
+    export_cleaned_lead: true
+    export_residual_bleed: true
+
+  stage4_curation:
+    enabled: true
+    name: "Dataset Auto-Curator & AI Voice Sanitizer"
+    vad_model: "silero_vad.onnx"
+    vad_download_url: "https://huggingface.co/SayMaven/avenox-models/resolve/main/silero_vad.onnx"
+    vad_threshold: 0.5
+    min_phrase_duration: 2.0
+    max_phrase_duration: 8.0
+    min_silence_duration_ms: 300
+    quality_threshold: 0.85
+    target_lufs: -23.0
+    true_peak_limit_db: -1.0
+    asr_model: "base"
+    asr_device: "cpu"
+    export_formats:
+      - "rvc"
+      - "gpt_sovits"
+      - "ljspeech"
