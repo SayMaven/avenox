@@ -35,6 +35,8 @@ if (Test-Path "$TargetDir\python.exe") {
     $pthContent = @"
 python311.zip
 .
+..
+../src
 Lib/site-packages
 import site
 "@

@@ -7,13 +7,20 @@ import os
 import sys
 import time
 import requests
-from typing import Optional, Callable, Dict, Any
+from typing import Optional, Callable, Dict, Any, TypedDict
 import logging
 
 logger = logging.getLogger("Avenox.Downloader")
 
+
+class ModelRegistryEntry(TypedDict):
+    url: str
+    description: str
+    expected_size_mb: int
+
+
 # Official default model download links
-DEFAULT_MODEL_REGISTRY = {
+DEFAULT_MODEL_REGISTRY: Dict[str, ModelRegistryEntry] = {
     "mel_band_roformer_vocals.ckpt": {
         "url": "https://huggingface.co/SayMaven/avenox-models/resolve/main/mel_band_roformer_vocals.ckpt",
         "description": "Mel-Band RoFormer Vocal Separation Model (Stage 1)",

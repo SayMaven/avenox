@@ -1,0 +1,14 @@
+{
+  "include": [
+    "src",
+    "training"
+  ],
+  "extraPaths": [
+    "src",
+    "python_embeded/Lib/site-packages"
+  ],
+  "typeCheckingMode": "basic",
+  "reportMissingImports": "none",
+  "reportMissingModuleSource": "none",
+  "reportGeneralTypeIssues": "none"
+}
